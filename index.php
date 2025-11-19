@@ -27,27 +27,80 @@ require "./Product.php";
 // $mobile = new PhysicalProduct("Appple iphone 15");
 // $mobile->setWeight(120);
 
-abstract class Vehicle {
-    public function test() {
-        return "test";
-    }
+// abstract class Vehicle {
+//     public function test() {
+//         return "test";
+//     }
 
-    abstract function drive();
-}
+//     abstract function drive();
+// }
 
-class Car extends Vehicle {
-    public function drive() {
-        echo "Driving...";
-    }
-}
+// class Car extends Vehicle {
+//     public function drive() {
+//         echo "Driving...";
+//     }
+// }
 
-class Bus extends Vehicle {
-    public function drive() {
+// class Bus extends Vehicle {
+//     public function drive() {
         
+//     }
+// }
+
+// $t = new Car();
+// var_dump($t->test());
+
+// $t->drive();
+
+
+// interface A {
+//     public function test();
+// }
+
+// class B implements A {
+//     public function test() {
+//         var_dump("Testing");
+//     }
+// }
+
+
+// function testing(A $a) {
+//     $a->test();
+// }
+
+
+// class C implements A {
+//     public function test() {
+//         var_dump("Testing with C");
+//     }
+// }
+// testing(new C());
+
+
+interface Mailer {
+    public function send();
+}
+
+class Gmail implements Mailer {
+    public function send () {
+        // ...
+
+        echo "Sending with Gmail";
     }
 }
 
-$t = new Car();
-var_dump($t->test());
+function send(Mailer $mailer) {
+    $mailer->send();
+}
 
-$t->drive();
+
+// mock
+class FakeMailer implements Mailer {
+    public function send() {
+        echo "Fake mail sent";
+    }
+}
+
+// send(new Gmail());
+
+send(new FakeMailer());
